@@ -69,9 +69,26 @@ export const login = async(req: Request, res: Response) : Promise<Response | voi
             _id : user._id,
             name : user.name
         })
+        console.log(user);
     }catch(err:any)
     {
         console.log("Error while logging in", err.message);
         res.status(500).json({error : "Internal Server error"})
+    }
+}
+
+export const logout = async(req:Request, res: Response) : Promise<Response | void> =>{
+    try{
+        const token = req.cookies?.jwt;
+        if(!token)
+        {
+            res.status(400).json({message: "No active Sessions"})
+        }
+        res.cookie("jwt", "", {maxAge:0});
+        res.status(200).json({message:"Successfully Logged out"});
+    }catch(err:any)
+    {
+        console.log("Error loggin out", err.message);
+        res.status(500).json({error: "Internal Server Error"})
     }
 }
