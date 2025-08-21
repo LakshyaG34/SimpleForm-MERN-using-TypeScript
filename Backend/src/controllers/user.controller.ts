@@ -47,10 +47,31 @@ export const signup = async(req: Request, res: Response) : Promise<Response | vo
         else{
             res.status(400).json({error: "Invalid user"})
         }
-    }catch(err)
+    }catch(err:any)
     {
-        console.log("Error caught", err);
+        console.log("Error caught", err.message);
         res.status(500).json({error: "Internal server error"})
         return;
+    }
+}
+
+export const login = async(req: Request, res: Response) : Promise<Response | void> =>{
+    try{
+        const {email, password} = req.body as UserTypes;
+        const user = await User.findOne({email});
+        const isPasswordCorr = await bcrypt.compare(password, user?.password || "");
+        if(!user || !isPasswordCorr)
+        {
+            res.status(400).json({error : "Invalid Login credentials"})
+        }
+        generateTokenSetCookie(user._id, res);
+        res.status(200).json({
+            _id : user._id,
+            name : user.name
+        })
+    }catch(err:any)
+    {
+        console.log("Error while logging in", err.message);
+        res.status(500).json({error : "Internal Server error"})
     }
 }
