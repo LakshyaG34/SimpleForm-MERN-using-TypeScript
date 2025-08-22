@@ -38,7 +38,7 @@ export const signup = async(req: Request, res: Response) : Promise<Response | vo
         {
             generateTokenSetCookie(newUser._id, res);
             await newUser.save();
-
+            console.log(newUser);
             res.status(200).json({
                 _id: newUser._id,
                 name: newUser.name,

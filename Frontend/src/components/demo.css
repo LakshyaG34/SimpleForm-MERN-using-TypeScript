@@ -1,5 +1,9 @@
+body{
+    display: flex;
+    justify-content: center;
+}
 .form-header{
-    padding: 5px;
+    padding:5px;
 }
 
 .form-hero{
@@ -7,9 +11,18 @@
     flex-direction:column;
     justify-content: space-between;
     align-items: center;
+    /* gap: 6px; */
 }
 
 .form-data{
     display: flex;
     flex-direction:column;
+    gap: 10px;
+}
+
+.form-item{
+    border-radius: 28px;
+    border-color: beige;
+    padding: 15px 26px;
+    text-align: center;
 }
