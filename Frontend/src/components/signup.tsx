@@ -30,6 +30,7 @@ const Signup = () => {
   return (
     <div className="form-header">
       <div className="form-hero">
+        <h2>SIGN UP</h2>
         <form className="form-data" onSubmit={handleSubmit}>
           <input
             placeholder="Enter your Name"
