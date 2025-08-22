@@ -18,7 +18,7 @@ const Home = () => {
       //   );
       //   console.log(res.data.message);
       //   navigate("/");
-      const response = await fetch("http://localhost:4000/api/logout", {
+      const response = await fetch("/api/logout", {
         method: "POST",
         credentials: "include", // important to send cookies
         headers: {
