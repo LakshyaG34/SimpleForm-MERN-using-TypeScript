@@ -18,13 +18,23 @@ const Home = () => {
       //   );
       //   console.log(res.data.message);
       //   navigate("/");
-      const response = await fetch("/api/logout", {
+      const response = await fetch("http://localhost:4000/api/logout", {
         method: "POST",
         credentials: "include", // important to send cookies
         headers: {
           "Content-Type": "application/json",
         },
       });
+      
+      //When serving the website on aws:-
+
+      // const response = await fetch("/api/logout", {
+      //   method: "POST",
+      //   credentials: "include", // important to send cookies
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      // });
 
       const data = await response.json();
       if (response.ok) {
