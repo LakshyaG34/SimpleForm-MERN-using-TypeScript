@@ -28,7 +28,7 @@ const Signin = () => {
       // console.log("SignIn successfull", res.data);
       // alert("Signin Succesfull");
 
-      const response = await fetch("/api/login", {
+      const response = await fetch("http://localhost:4000/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
